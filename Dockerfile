@@ -13,4 +13,4 @@ COPY app.py app.py
 WORKDIR .
 
 # Run
-CMD streamlit run --server.port 8080 --server.enableCORS false app.py
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8080", "--server.address=0.0.0.0"]
