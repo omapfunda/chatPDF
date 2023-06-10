@@ -13,4 +13,4 @@ COPY app.py app.py
 WORKDIR .
 
 # Run
-CMD streamlit run --server.port $PORT --server.enableCORS false app.py
+CMD streamlit run --server.port 8080 --server.enableCORS false app.py
