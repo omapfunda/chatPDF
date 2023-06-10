@@ -1,13 +1,14 @@
 FROM python:3.7
 
-WORKDIR/app
-
-COPY requirements.txt ./requirements.txt
-
-RUN pip install -r requirements.txt
-
+# Expose port you want your app on
 EXPOSE 8080
 
-COPY ./app
+#Copy local code to the container image
+WORKDIR .
+COPY ../
+
+# Install production dependencies
+RUN pip install -r requirements.txt
+
 
 CMD streamlit run --server.port 8080 --server.enableCORS false app.py
