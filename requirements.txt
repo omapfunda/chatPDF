@@ -15,3 +15,4 @@ accelerate==0.18.0
 InstructorEmbedding 
 sentence_transformers
 chromadb
+protobuf==3.20.*
