@@ -39,13 +39,13 @@ with st.sidebar:
 
 #load_dotenv()
 def main():
-  llm = OpenAI()
-  #model = pipeline(
+  #llm = OpenAI()
+  model = pipeline(
             task="text2text-generation",
             model = "lmsys/fastchat-t5-3b-v1.0",
             model_kwargs={"device_map": "auto", "max_length": 512, "temperature": 0})
 
-  #hf_llm = HuggingFacePipeline(pipeline=model) 
+  hf_llm = HuggingFacePipeline(pipeline=model) 
 
   st.header('Chat with the PDF')
   #upload a PDF file
@@ -72,10 +72,10 @@ def main():
         VectorStore = pickle.load(f)
       #st.write('Embeddings Loaded from the Disk')
     else :
-      embeddings = OpenAIEmbeddings()
-      #Instructor = "hkunlp/instructor-xl"
-      #hf_embeddings = HuggingFaceInstructEmbeddings(model_name=Instructor, model_kwargs={"device": "cuda"})
-      VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
+      #embeddings = OpenAIEmbeddings()
+      Instructor = "hkunlp/instructor-xl"
+      hf_embeddings = HuggingFaceInstructEmbeddings(model_name=Instructor, model_kwargs={"device": "cuda"})
+      VectorStore = FAISS.from_texts(chunks, embedding=hf_embeddings)
       with open(f"{store_name}.pkl", "wb") as f:
         pickle.dump(VectorStore, f)
         
@@ -88,12 +88,7 @@ def main():
       #docs = VectorStore.similarity_search(query=query)
 
         
-      #chain = RetrievalQA.from_chain_type(llm=hf_llm, 
-                                    chain_type="stuff", 
-                                    retriever=VectorStore.as_retriever(), 
-                                    input_key="question")
-      
-      chain = RetrievalQA.from_chain_type(llm=llm, 
+      chain = RetrievalQA.from_chain_type(llm=hf_llm, 
                                     chain_type="stuff", 
                                     retriever=VectorStore.as_retriever(), 
                                     input_key="question")
