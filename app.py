@@ -21,7 +21,7 @@ from langchain import HuggingFacePipeline
 
 locale.getpreferredencoding = lambda: "UTF-8"
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
-os.environ['OPENAI_API_KEY'] = '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'
+os.environ['OPENAI_API_KEY'] = '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'
 
 
 # Sidebar contents
