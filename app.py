@@ -46,7 +46,7 @@ def main():
             model = "lmsys/fastchat-t5-3b-v1.0",
             model_kwargs={"device_map": "auto", "max_length": 512, "temperature": 0})
 
-  hf_llm = HuggingFacePipeline(pipeline=model) 
+  #hf_llm = HuggingFacePipeline(pipeline=model) 
 
   st.header('Chat with the PDF')
   #upload a PDF file
