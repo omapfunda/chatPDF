@@ -1,6 +1,6 @@
-runtime: custom
+runtime: python311
 env: flex
 resources:
-  cpu: 4
-  memory_gb: 22.4
+  cpu: 6
+  memory_gb: 36
   disk_size_gb: 100
