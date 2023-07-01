@@ -4,3 +4,5 @@ resources:
   cpu: 6
   memory_gb: 36
   disk_size_gb: 100
+automatic_scaling:
+  max_num_instances: 1
